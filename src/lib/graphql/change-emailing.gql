@@ -1,0 +1,13 @@
+mutation ChangeEmailing($nodeId: ID = "", $send: Boolean = false, $email: String = "", $data: JSON = "") {
+  updateEmailing(
+    input: {emailingPatch: {send: $send, email: $email, data: $data}, nodeId: $nodeId}
+  ) {
+    emailing {
+      data
+      email
+      id
+      nodeId
+      send
+    }
+  }
+}

@@ -1,0 +1,11 @@
+query GetFirstEmailing {
+  allEmailings(first: 1) {
+    nodes {
+      data
+      email
+      id
+      send
+      nodeId
+    }
+  }
+}

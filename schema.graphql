@@ -1,0 +1,1177 @@
+"""
+A signed eight-byte integer. The upper big integer values are greater than the
+max value for a JavaScript number. Therefore all big integers will be output as
+strings and not numbers.
+"""
+scalar BigInt
+
+type Blood implements Node {
+  a: Boolean
+  id: Int!
+  name: String!
+
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  ra: String!
+  rid: Int!
+  rt: Datetime!
+  ru: Int!
+  v: Boolean
+}
+
+"""
+A condition to be used against `Blood` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input BloodCondition {
+  """Checks for equality with the object’s `a` field."""
+  a: Boolean
+
+  """Checks for equality with the object’s `id` field."""
+  id: Int
+
+  """Checks for equality with the object’s `name` field."""
+  name: String
+
+  """Checks for equality with the object’s `ra` field."""
+  ra: String
+
+  """Checks for equality with the object’s `rid` field."""
+  rid: Int
+
+  """Checks for equality with the object’s `rt` field."""
+  rt: Datetime
+
+  """Checks for equality with the object’s `ru` field."""
+  ru: Int
+
+  """Checks for equality with the object’s `v` field."""
+  v: Boolean
+}
+
+"""A connection to a list of `Blood` values."""
+type BloodConnection {
+  """
+  A list of edges which contains the `Blood` and cursor to aid in pagination.
+  """
+  edges: [BloodEdge!]!
+
+  """A list of `Blood` objects."""
+  nodes: [Blood]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Blood` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Blood` edge in the connection."""
+type BloodEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Blood` at the end of the edge."""
+  node: Blood
+}
+
+"""An input for mutations affecting `Blood`"""
+input BloodInput {
+  a: Boolean
+  id: Int!
+  name: String
+  ra: String
+  rid: Int
+  rt: Datetime
+  ru: Int
+  v: Boolean
+}
+
+"""Methods to use when ordering `Blood`."""
+enum BloodOrderBy {
+  A_ASC
+  A_DESC
+  ID_ASC
+  ID_DESC
+  NAME_ASC
+  NAME_DESC
+  NATURAL
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+  RA_ASC
+  RA_DESC
+  RID_ASC
+  RID_DESC
+  RT_ASC
+  RT_DESC
+  RU_ASC
+  RU_DESC
+  V_ASC
+  V_DESC
+}
+
+"""
+Represents an update to a `Blood`. Fields that are set will be updated.
+"""
+input BloodPatch {
+  a: Boolean
+  id: Int
+  name: String
+  ra: String
+  rid: Int
+  rt: Datetime
+  ru: Int
+  v: Boolean
+}
+
+"""All input for the create `Blood` mutation."""
+input CreateBloodInput {
+  """The `Blood` to be created by this mutation."""
+  blood: BloodInput!
+
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+}
+
+"""The output of our create `Blood` mutation."""
+type CreateBloodPayload {
+  """The `Blood` that was created by this mutation."""
+  blood: Blood
+
+  """An edge for our `Blood`. May be used by Relay 1."""
+  bloodEdge(
+    """The method to use when ordering `Blood`."""
+    orderBy: [BloodOrderBy!] = [PRIMARY_KEY_ASC]
+  ): BloodEdge
+
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""All input for the create `Emailing` mutation."""
+input CreateEmailingInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Emailing` to be created by this mutation."""
+  emailing: EmailingInput!
+}
+
+"""The output of our create `Emailing` mutation."""
+type CreateEmailingPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Emailing` that was created by this mutation."""
+  emailing: Emailing
+
+  """An edge for our `Emailing`. May be used by Relay 1."""
+  emailingEdge(
+    """The method to use when ordering `Emailing`."""
+    orderBy: [EmailingsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): EmailingsEdge
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""All input for the create `Kell` mutation."""
+input CreateKellInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `Kell` to be created by this mutation."""
+  kell: KellInput!
+}
+
+"""The output of our create `Kell` mutation."""
+type CreateKellPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Kell` that was created by this mutation."""
+  kell: Kell
+
+  """An edge for our `Kell`. May be used by Relay 1."""
+  kellEdge(
+    """The method to use when ordering `Kell`."""
+    orderBy: [KellsOrderBy!] = [NATURAL]
+  ): KellsEdge
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""All input for the create `VBlood` mutation."""
+input CreateVBloodInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `VBlood` to be created by this mutation."""
+  vBlood: VBloodInput!
+}
+
+"""The output of our create `VBlood` mutation."""
+type CreateVBloodPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """The `VBlood` that was created by this mutation."""
+  vBlood: VBlood
+
+  """An edge for our `VBlood`. May be used by Relay 1."""
+  vBloodEdge(
+    """The method to use when ordering `VBlood`."""
+    orderBy: [VBloodsOrderBy!] = [NATURAL]
+  ): VBloodsEdge
+}
+
+"""All input for the create `VKell` mutation."""
+input CreateVKellInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """The `VKell` to be created by this mutation."""
+  vKell: VKellInput!
+}
+
+"""The output of our create `VKell` mutation."""
+type CreateVKellPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+
+  """The `VKell` that was created by this mutation."""
+  vKell: VKell
+
+  """An edge for our `VKell`. May be used by Relay 1."""
+  vKellEdge(
+    """The method to use when ordering `VKell`."""
+    orderBy: [VKellsOrderBy!] = [NATURAL]
+  ): VKellsEdge
+}
+
+"""A location in a connection that can be used for resuming pagination."""
+scalar Cursor
+
+"""
+A point in time as described by the [ISO
+8601](https://en.wikipedia.org/wiki/ISO_8601) standard. May or may not include a timezone.
+"""
+scalar Datetime
+
+"""All input for the `deleteBloodByRid` mutation."""
+input DeleteBloodByRidInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  rid: Int!
+}
+
+"""All input for the `deleteBlood` mutation."""
+input DeleteBloodInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Blood` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""The output of our delete `Blood` mutation."""
+type DeleteBloodPayload {
+  """The `Blood` that was deleted by this mutation."""
+  blood: Blood
+
+  """An edge for our `Blood`. May be used by Relay 1."""
+  bloodEdge(
+    """The method to use when ordering `Blood`."""
+    orderBy: [BloodOrderBy!] = [PRIMARY_KEY_ASC]
+  ): BloodEdge
+
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  deletedBloodId: ID
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""All input for the `deleteEmailingById` mutation."""
+input DeleteEmailingByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  id: Int!
+}
+
+"""All input for the `deleteEmailing` mutation."""
+input DeleteEmailingInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Emailing` to be deleted.
+  """
+  nodeId: ID!
+}
+
+"""The output of our delete `Emailing` mutation."""
+type DeleteEmailingPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+  deletedEmailingId: ID
+
+  """The `Emailing` that was deleted by this mutation."""
+  emailing: Emailing
+
+  """An edge for our `Emailing`. May be used by Relay 1."""
+  emailingEdge(
+    """The method to use when ordering `Emailing`."""
+    orderBy: [EmailingsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): EmailingsEdge
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+type Emailing implements Node {
+  data: JSON
+  email: String
+  id: Int!
+
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+  send: Boolean!
+}
+
+"""
+A condition to be used against `Emailing` object types. All fields are tested
+for equality and combined with a logical ‘and.’
+"""
+input EmailingCondition {
+  """Checks for equality with the object’s `data` field."""
+  data: JSON
+
+  """Checks for equality with the object’s `email` field."""
+  email: String
+
+  """Checks for equality with the object’s `id` field."""
+  id: Int
+
+  """Checks for equality with the object’s `send` field."""
+  send: Boolean
+}
+
+"""An input for mutations affecting `Emailing`"""
+input EmailingInput {
+  data: JSON
+  email: String
+  id: Int
+  send: Boolean
+}
+
+"""
+Represents an update to a `Emailing`. Fields that are set will be updated.
+"""
+input EmailingPatch {
+  data: JSON
+  email: String
+  id: Int
+  send: Boolean
+}
+
+"""A connection to a list of `Emailing` values."""
+type EmailingsConnection {
+  """
+  A list of edges which contains the `Emailing` and cursor to aid in pagination.
+  """
+  edges: [EmailingsEdge!]!
+
+  """A list of `Emailing` objects."""
+  nodes: [Emailing]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Emailing` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Emailing` edge in the connection."""
+type EmailingsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Emailing` at the end of the edge."""
+  node: Emailing
+}
+
+"""Methods to use when ordering `Emailing`."""
+enum EmailingsOrderBy {
+  DATA_ASC
+  DATA_DESC
+  EMAIL_ASC
+  EMAIL_DESC
+  ID_ASC
+  ID_DESC
+  NATURAL
+  PRIMARY_KEY_ASC
+  PRIMARY_KEY_DESC
+  SEND_ASC
+  SEND_DESC
+}
+
+"""
+A JavaScript object encoded in the JSON format as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type Kell {
+  a: Boolean!
+  abbrev: String!
+  id: Int!
+  note: String!
+  ra: String!
+  rid: Int!
+  rt: Datetime!
+  v: Boolean!
+}
+
+"""
+A condition to be used against `Kell` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input KellCondition {
+  """Checks for equality with the object’s `a` field."""
+  a: Boolean
+
+  """Checks for equality with the object’s `abbrev` field."""
+  abbrev: String
+
+  """Checks for equality with the object’s `id` field."""
+  id: Int
+
+  """Checks for equality with the object’s `note` field."""
+  note: String
+
+  """Checks for equality with the object’s `ra` field."""
+  ra: String
+
+  """Checks for equality with the object’s `rid` field."""
+  rid: Int
+
+  """Checks for equality with the object’s `rt` field."""
+  rt: Datetime
+
+  """Checks for equality with the object’s `v` field."""
+  v: Boolean
+}
+
+"""An input for mutations affecting `Kell`"""
+input KellInput {
+  a: Boolean
+  abbrev: String!
+  id: Int!
+  note: String!
+  ra: String
+  rid: Int
+  rt: Datetime
+  v: Boolean
+}
+
+"""A connection to a list of `Kell` values."""
+type KellsConnection {
+  """
+  A list of edges which contains the `Kell` and cursor to aid in pagination.
+  """
+  edges: [KellsEdge!]!
+
+  """A list of `Kell` objects."""
+  nodes: [Kell]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `Kell` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `Kell` edge in the connection."""
+type KellsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `Kell` at the end of the edge."""
+  node: Kell
+}
+
+"""Methods to use when ordering `Kell`."""
+enum KellsOrderBy {
+  ABBREV_ASC
+  ABBREV_DESC
+  A_ASC
+  A_DESC
+  ID_ASC
+  ID_DESC
+  NATURAL
+  NOTE_ASC
+  NOTE_DESC
+  RA_ASC
+  RA_DESC
+  RID_ASC
+  RID_DESC
+  RT_ASC
+  RT_DESC
+  V_ASC
+  V_DESC
+}
+
+"""
+The root mutation type which contains root level fields which mutate data.
+"""
+type Mutation {
+  """Creates a single `Blood`."""
+  createBlood(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateBloodInput!
+  ): CreateBloodPayload
+
+  """Creates a single `Emailing`."""
+  createEmailing(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateEmailingInput!
+  ): CreateEmailingPayload
+
+  """Creates a single `Kell`."""
+  createKell(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateKellInput!
+  ): CreateKellPayload
+
+  """Creates a single `VBlood`."""
+  createVBlood(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateVBloodInput!
+  ): CreateVBloodPayload
+
+  """Creates a single `VKell`."""
+  createVKell(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: CreateVKellInput!
+  ): CreateVKellPayload
+
+  """Deletes a single `Blood` using its globally unique id."""
+  deleteBlood(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteBloodInput!
+  ): DeleteBloodPayload
+
+  """Deletes a single `Blood` using a unique key."""
+  deleteBloodByRid(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteBloodByRidInput!
+  ): DeleteBloodPayload
+
+  """Deletes a single `Emailing` using its globally unique id."""
+  deleteEmailing(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteEmailingInput!
+  ): DeleteEmailingPayload
+
+  """Deletes a single `Emailing` using a unique key."""
+  deleteEmailingById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: DeleteEmailingByIdInput!
+  ): DeleteEmailingPayload
+  sfGetData(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: SfGetDataInput!
+  ): SfGetDataPayload
+
+  """Updates a single `Blood` using its globally unique id and a patch."""
+  updateBlood(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateBloodInput!
+  ): UpdateBloodPayload
+
+  """Updates a single `Blood` using a unique key and a patch."""
+  updateBloodByRid(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateBloodByRidInput!
+  ): UpdateBloodPayload
+
+  """Updates a single `Emailing` using its globally unique id and a patch."""
+  updateEmailing(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateEmailingInput!
+  ): UpdateEmailingPayload
+
+  """Updates a single `Emailing` using a unique key and a patch."""
+  updateEmailingById(
+    """
+    The exclusive input argument for this mutation. An object type, make sure to see documentation for this object’s fields.
+    """
+    input: UpdateEmailingByIdInput!
+  ): UpdateEmailingPayload
+}
+
+"""An object with a globally unique `ID`."""
+interface Node {
+  """
+  A globally unique identifier. Can be used in various places throughout the system to identify this single value.
+  """
+  nodeId: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, the cursor to continue."""
+  endCursor: Cursor
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: Cursor
+}
+
+"""The root query type which gives access points into the data universe."""
+type Query implements Node {
+  """Reads and enables pagination through a set of `Blood`."""
+  allBlood(
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: BloodCondition
+
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """The method to use when ordering `Blood`."""
+    orderBy: [BloodOrderBy!] = [PRIMARY_KEY_ASC]
+  ): BloodConnection
+
+  """Reads and enables pagination through a set of `Emailing`."""
+  allEmailings(
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: EmailingCondition
+
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """The method to use when ordering `Emailing`."""
+    orderBy: [EmailingsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): EmailingsConnection
+
+  """Reads and enables pagination through a set of `Kell`."""
+  allKells(
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: KellCondition
+
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """The method to use when ordering `Kell`."""
+    orderBy: [KellsOrderBy!] = [NATURAL]
+  ): KellsConnection
+
+  """Reads and enables pagination through a set of `VBlood`."""
+  allVBloods(
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: VBloodCondition
+
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """The method to use when ordering `VBlood`."""
+    orderBy: [VBloodsOrderBy!] = [NATURAL]
+  ): VBloodsConnection
+
+  """Reads and enables pagination through a set of `VKell`."""
+  allVKells(
+    """Read all values in the set after (below) this cursor."""
+    after: Cursor
+
+    """Read all values in the set before (above) this cursor."""
+    before: Cursor
+
+    """
+    A condition to be used in determining which values should be returned by the collection.
+    """
+    condition: VKellCondition
+
+    """Only read the first `n` values of the set."""
+    first: Int
+
+    """Only read the last `n` values of the set."""
+    last: Int
+
+    """
+    Skip the first `n` values from our `after` cursor, an alternative to cursor
+    based pagination. May not be used with `last`.
+    """
+    offset: Int
+
+    """The method to use when ordering `VKell`."""
+    orderBy: [VKellsOrderBy!] = [NATURAL]
+  ): VKellsConnection
+
+  """Reads a single `Blood` using its globally unique `ID`."""
+  blood(
+    """The globally unique `ID` to be used in selecting a single `Blood`."""
+    nodeId: ID!
+  ): Blood
+  bloodByRid(rid: Int!): Blood
+
+  """Reads a single `Emailing` using its globally unique `ID`."""
+  emailing(
+    """The globally unique `ID` to be used in selecting a single `Emailing`."""
+    nodeId: ID!
+  ): Emailing
+  emailingById(id: Int!): Emailing
+
+  """Fetches an object given its globally unique `ID`."""
+  node(
+    """The globally unique `ID`."""
+    nodeId: ID!
+  ): Node
+
+  """
+  The root query type must be a `Node` to work well with Relay 1 mutations. This just resolves to `query`.
+  """
+  nodeId: ID!
+
+  """
+  Exposes the root query type nested one level down. This is helpful for Relay 1
+  which can only query top level fields if they are in a particular form.
+  """
+  query: Query!
+}
+
+"""All input for the `sfGetData` mutation."""
+input SfGetDataInput {
+  cislo: BigInt
+
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+}
+
+"""The output of our `sfGetData` mutation."""
+type SfGetDataPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+  string: String
+}
+
+"""All input for the `updateBloodByRid` mutation."""
+input UpdateBloodByRidInput {
+  """
+  An object where the defined keys will be set on the `Blood` being updated.
+  """
+  bloodPatch: BloodPatch!
+
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+  rid: Int!
+}
+
+"""All input for the `updateBlood` mutation."""
+input UpdateBloodInput {
+  """
+  An object where the defined keys will be set on the `Blood` being updated.
+  """
+  bloodPatch: BloodPatch!
+
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  The globally unique `ID` which will identify a single `Blood` to be updated.
+  """
+  nodeId: ID!
+}
+
+"""The output of our update `Blood` mutation."""
+type UpdateBloodPayload {
+  """The `Blood` that was updated by this mutation."""
+  blood: Blood
+
+  """An edge for our `Blood`. May be used by Relay 1."""
+  bloodEdge(
+    """The method to use when ordering `Blood`."""
+    orderBy: [BloodOrderBy!] = [PRIMARY_KEY_ASC]
+  ): BloodEdge
+
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+"""All input for the `updateEmailingById` mutation."""
+input UpdateEmailingByIdInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Emailing` being updated.
+  """
+  emailingPatch: EmailingPatch!
+  id: Int!
+}
+
+"""All input for the `updateEmailing` mutation."""
+input UpdateEmailingInput {
+  """
+  An arbitrary string value with no semantic meaning. Will be included in the
+  payload verbatim. May be used to track mutations by the client.
+  """
+  clientMutationId: String
+
+  """
+  An object where the defined keys will be set on the `Emailing` being updated.
+  """
+  emailingPatch: EmailingPatch!
+
+  """
+  The globally unique `ID` which will identify a single `Emailing` to be updated.
+  """
+  nodeId: ID!
+}
+
+"""The output of our update `Emailing` mutation."""
+type UpdateEmailingPayload {
+  """
+  The exact same `clientMutationId` that was provided in the mutation input,
+  unchanged and unused. May be used by a client to track mutations.
+  """
+  clientMutationId: String
+
+  """The `Emailing` that was updated by this mutation."""
+  emailing: Emailing
+
+  """An edge for our `Emailing`. May be used by Relay 1."""
+  emailingEdge(
+    """The method to use when ordering `Emailing`."""
+    orderBy: [EmailingsOrderBy!] = [PRIMARY_KEY_ASC]
+  ): EmailingsEdge
+
+  """
+  Our root query field type. Allows us to run any query from our mutation payload.
+  """
+  query: Query
+}
+
+type VBlood {
+  id: Int
+  name: String
+}
+
+"""
+A condition to be used against `VBlood` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input VBloodCondition {
+  """Checks for equality with the object’s `id` field."""
+  id: Int
+
+  """Checks for equality with the object’s `name` field."""
+  name: String
+}
+
+"""An input for mutations affecting `VBlood`"""
+input VBloodInput {
+  id: Int
+  name: String
+}
+
+"""A connection to a list of `VBlood` values."""
+type VBloodsConnection {
+  """
+  A list of edges which contains the `VBlood` and cursor to aid in pagination.
+  """
+  edges: [VBloodsEdge!]!
+
+  """A list of `VBlood` objects."""
+  nodes: [VBlood]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `VBlood` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `VBlood` edge in the connection."""
+type VBloodsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `VBlood` at the end of the edge."""
+  node: VBlood
+}
+
+"""Methods to use when ordering `VBlood`."""
+enum VBloodsOrderBy {
+  ID_ASC
+  ID_DESC
+  NAME_ASC
+  NAME_DESC
+  NATURAL
+}
+
+type VKell {
+  abbrev: String
+  id: Int
+  note: String
+}
+
+"""
+A condition to be used against `VKell` object types. All fields are tested for equality and combined with a logical ‘and.’
+"""
+input VKellCondition {
+  """Checks for equality with the object’s `abbrev` field."""
+  abbrev: String
+
+  """Checks for equality with the object’s `id` field."""
+  id: Int
+
+  """Checks for equality with the object’s `note` field."""
+  note: String
+}
+
+"""An input for mutations affecting `VKell`"""
+input VKellInput {
+  abbrev: String
+  id: Int
+  note: String
+}
+
+"""A connection to a list of `VKell` values."""
+type VKellsConnection {
+  """
+  A list of edges which contains the `VKell` and cursor to aid in pagination.
+  """
+  edges: [VKellsEdge!]!
+
+  """A list of `VKell` objects."""
+  nodes: [VKell]!
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """The count of *all* `VKell` you could get from the connection."""
+  totalCount: Int!
+}
+
+"""A `VKell` edge in the connection."""
+type VKellsEdge {
+  """A cursor for use in pagination."""
+  cursor: Cursor
+
+  """The `VKell` at the end of the edge."""
+  node: VKell
+}
+
+"""Methods to use when ordering `VKell`."""
+enum VKellsOrderBy {
+  ABBREV_ASC
+  ABBREV_DESC
+  ID_ASC
+  ID_DESC
+  NATURAL
+  NOTE_ASC
+  NOTE_DESC
+}

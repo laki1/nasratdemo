@@ -1,0 +1,11 @@
+query BloodList2 {
+  allVBloods(first: 5) @paginate(mode: SinglePage) {
+    edges {
+      node {
+        id
+        name
+      }
+      cursor
+    }    
+  }
+}

@@ -1,0 +1,11 @@
+query BloodList5 {
+  allVBloods(first: 4) @paginate(mode: Infinite) {
+    edges {
+      node {
+        id
+        name
+      }
+      cursor
+    }    
+  }
+}

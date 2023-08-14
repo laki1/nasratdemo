@@ -1,0 +1,6 @@
+mutation sfGetData($cislo: BigInt) {
+  sfGetData(input: {cislo: $cislo}) {
+    clientMutationId
+    value: string
+  }
+}

@@ -1,0 +1,12 @@
+query GetKellsInfinite {
+  allVKells(first: 2) @paginate(mode: Infinite) {
+    edges {
+      cursor
+      node {
+        abbrev
+        id
+        note
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+query Blood {
+  allVBloods {
+    nodes {
+      id
+      name
+    }
+    totalCount
+  }
+}

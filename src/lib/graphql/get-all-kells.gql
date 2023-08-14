@@ -1,0 +1,9 @@
+query GetAllKells {
+  allVKells {
+    nodes {
+      abbrev
+      id
+      note
+    }
+  }
+}
